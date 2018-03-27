@@ -7,19 +7,18 @@ const styles = StyleSheet.create({
 })
 
 export default class Word extends Component {
-  
+
   constructor() {
     super()
-    this.words = ['one', 'two', 'three', 'four']
+    this.words = ['teeth', 'baby', 'silly', 'community']
     this.wordListLength = this.words.length
   }
-  
+
   componentDidMount() {
-    //Speech.speak(this.words[0])   
+    this.soundAndSpellWord(this.words[0])
   }
-  
-  async componentDidUpdate() {
-    let currWord = this.words[this.props.index % this.wordListLength]
+
+  async soundAndSpellWord(currWord) {
     await Speech.speak(currWord)
     //console.log(currWord)
     for(let letter of currWord) {
@@ -27,7 +26,12 @@ export default class Word extends Component {
       //console.log(letter)
     }
   }
-      
+
+  componentDidUpdate() {
+    let currWord = this.words[this.props.index % this.wordListLength]
+    this.soundAndSpellWord(currWord)
+  }
+
   render() {
     let word = this.words[this.props.index % this.wordListLength]
     //Speech.speak(word)

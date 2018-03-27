@@ -15,14 +15,14 @@ export default class App extends Component {
       index: 0
     }
   }
-  
+
   nextWord() {
     this.setState(prevState => ({
       index: ++prevState.index
     }))
     //console.log(this.state.index)
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
